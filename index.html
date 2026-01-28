@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ace Guard | 대한민국 1% 프리미엄 보안</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <style>
+        :root {
+            --gold-gradient: linear-gradient(90deg, #D4AF37 0%, #FFFACD 50%, #BF9B30 100%);
+            --deep-navy-black: #00050D;
+        }
+        body {
+            background-color: var(--deep-navy-black);
+            color: white;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            overflow-x: hidden;
+        }
+        .font-cinzel {
+            font-family: 'Cinzel', serif;
+        }
+        .text-gold-gradient {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .border-gold {
+            border-image: var(--gold-gradient) 1;
+        }
+        
+        @keyframes scrollUp {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+        .animate-scroll-up {
+            animation: scrollUp 40s linear infinite;
+        }
+        .animate-scroll-up:hover {
+            animation-play-state: paused;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #00050D;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #BF9B30;
+            border-radius: 4px;
+        }
+
+        .gold-glow {
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+        
+        /* YouTube Overlay Fix for Responsive Background */
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100vw;
+            height: 56.25vw; /* 16:9 ratio based on width */
+            min-height: 100vh;
+            min-width: 177.77vh; /* 16:9 ratio based on height */
+        }
+
+        /* Mobile specific video height override to show ENTIRE video without cropping */
+        @media (max-width: 768px) {
+            .mobile-video-responsive {
+                height: auto !important;
+                aspect-ratio: 16/9;
+                min-height: 0 !important;
+            }
+            .video-container iframe {
+                width: 100% !important;
+                height: 100% !important;
+                min-width: 0 !important;
+                min-height: 0 !important;
+                top: 0 !important;
+                left: 0 !important;
+                transform: none !important;
+                position: relative !important;
+            }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "lucide-react": "https://esm.sh/lucide-react@0.468.0?bundle",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="./index.tsx"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
