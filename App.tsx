@@ -1188,18 +1188,32 @@ const ContactForm = ({ contact }: { contact: SiteData["contact"] }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // 입력값 검증
-    if (!name.trim() || !phone.trim()) {
-      alert("성함과 연락처를 모두 입력해주세요.");
+    // 입력값 검증 - 빈 데이터 전송 완벽 차단
+    const trimmedName = (name || "").trim();
+    const trimmedPhone = (phone || "").trim();
+
+    // 성함 또는 연락처가 비어있으면 alert 표시하고 전송 중단
+    if (!trimmedName || !trimmedPhone) {
+      alert("성함과 연락처를 모두 입력해 주세요");
       return;
     }
 
+    // 공백만 입력된 경우도 차단
+    if (
+      trimmedName.replace(/\s/g, "").length === 0 ||
+      trimmedPhone.replace(/\s/g, "").length === 0
+    ) {
+      alert("성함과 연락처를 모두 입력해 주세요");
+      return;
+    }
+
+    // 검증 통과 - 데이터가 있을 때만 전송 진행
     setIsSending(true);
     setIsSent(false);
 
     const requestData = {
-      name: name.trim(),
-      phone: phone.trim(),
+      name: trimmedName,
+      phone: trimmedPhone,
     };
 
     console.log("전송 시작:", requestData);
