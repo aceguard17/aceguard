@@ -91,7 +91,7 @@ const INITIAL_DATA: SiteData = {
       imageDetails: ["본행사", "SOM1", "SOM2", "SOM3"],
     },
     {
-      title: "02. 지역 축제 및 문화 페스티벌",
+      title: "02. 축제 및 문화 페스티벌",
       location: "노원 / 안산 / 광명 / 전주 / 괴산 / 국악 / 과천",
       desc: "노원탈축제 / 안산거리축제 / 광명페스티벌 / 전주가맥축제 / 괴산축제 / 국악 축제 / 과천축제",
       img: "https://i.ifh.cc/k05okF.jpg",
@@ -134,7 +134,7 @@ const INITIAL_DATA: SiteData = {
       location: "SPORTS / EVENT / EXCLUSIVE",
       desc: "수원스타필드오프닝 / 신한동해오전 골프대회 / 전국노래자랑 / 송가인 팬미팅 / LPGA 선수권대회 / 인천포럼 / 평창올림픽 / 스포츠행사경호 / 새마을금고 열린음악회",
       img: "https://i.ifh.cc/Whlht7.jpg",
-      year: "VIP 의전과 스포츠 특화 경호 로직 노출",
+      year: "VIP 의전과 스포츠 특화 경호",
       images: [
         "https://i.ifh.cc/Whlht7.jpg",
         "https://i.ifh.cc/soT5cC.jpg",
@@ -188,7 +188,7 @@ const INITIAL_DATA: SiteData = {
       location: "PRIVATE / 1:1",
       desc: "1:1 전담 신변보호 서비스 / 시설보안 / 법정동행",
       img: "https://i.ifh.cc/8m0dBb.jpg",
-      year: "개인의 일상을 지키는 '용의 시선'과 고요한 수호",
+      year: "전문 수행경호를 통해 고객의 품격을 높여드립니다",
       images: [
         "https://i.ifh.cc/8m0dBb.jpg",
         "https://i.ifh.cc/S5MpBt.jpg",
@@ -819,11 +819,11 @@ const VideoSection = () => {
           frameBorder="0"
           allow="autoplay; encrypted-media"
           allowFullScreen
-          className="w-full h-full scale-105"
+          className="w-full h-full scale-125 md:scale-105"
         ></iframe>
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-[#00050D]"></div>
       </div>
-      <div className="absolute -bottom-16 md:bottom-8 left-1/2 transform -translate-x-1/2 z-10 flex flex-col items-center gap-2 animate-bounce">
+      <div className="absolute -bottom-16 md:bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center justify-center gap-2 animate-bounce">
         <span className="text-white/60 text-xs tracking-wider uppercase font-light">
           더 보기
         </span>
@@ -926,7 +926,16 @@ const PortfolioSection = ({ cases }: { cases: PortfolioCase[] }) => {
                   {item.year}
                 </span>
                 <h3 className="text-2xl font-bold text-white mb-2">
-                  {item.title}
+                  {item.title === "04. 스포츠 & 팬미팅 & 행사경호" ? (
+                    <>
+                      <span className="md:hidden">04. 스포츠 & 팬미팅</span>
+                      <span className="hidden md:inline">
+                        04. 스포츠 & 팬미팅 & 행사경호
+                      </span>
+                    </>
+                  ) : (
+                    item.title
+                  )}
                 </h3>
                 <p className="text-white/60 text-xs transform translate-y-0 opacity-100 md:translate-y-4 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 transition-all duration-300 line-clamp-2">
                   {item.desc}
@@ -990,7 +999,17 @@ const PortfolioSection = ({ cases }: { cases: PortfolioCase[] }) => {
                 {cases[activeProjectIndex].year}
               </p>
               <h3 className="text-3xl md:text-4xl font-black text-white">
-                {cases[activeProjectIndex].title}
+                {cases[activeProjectIndex].title ===
+                "04. 스포츠 & 팬미팅 & 행사경호" ? (
+                  <>
+                    <span className="md:hidden">04. 스포츠 & 팬미팅</span>
+                    <span className="hidden md:inline">
+                      04. 스포츠 & 팬미팅 & 행사경호
+                    </span>
+                  </>
+                ) : (
+                  cases[activeProjectIndex].title
+                )}
               </h3>
               <p className="text-white/40 text-sm font-light">
                 {cases[activeProjectIndex].imageDetails?.[activeImageIndex] ||
