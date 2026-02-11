@@ -1248,6 +1248,16 @@ const ContactForm = ({ contact }: { contact: SiteData["contact"] }) => {
 
       if (response.ok) {
         console.log("✅ 전송 성공!");
+        // NAVER 전환 스크립트 - 신청완료(lead) 전송
+        if (
+          typeof window !== "undefined" &&
+          typeof (window as unknown as { naverLeadConversion?: () => void })
+            .naverLeadConversion === "function"
+        ) {
+          (
+            window as unknown as { naverLeadConversion: () => void }
+          ).naverLeadConversion();
+        }
         alert("문의가 정상적으로 접수되었습니다.");
         // 폼 초기화
         setName("");

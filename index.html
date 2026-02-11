@@ -134,6 +134,30 @@
       }
     </script>
     <link rel="stylesheet" href="/index.css" />
+
+    <!-- NAVER 공통 로그분석 스크립트 -->
+    <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+    <script type="text/javascript">
+      if (!wcs_add) var wcs_add = {};
+      wcs_add["wa"] = "s_305d3d3a0c05";
+      if (!_nasa) var _nasa = {};
+      if (window.wcs) {
+        wcs.inflow();
+        wcs_do();
+      }
+    </script>
+    <!-- NAVER 신청완료(lead) 전환 호출용 - 신청 성공 시 window.naverLeadConversion() 호출 -->
+    <script type="text/javascript">
+      window.naverLeadConversion = function () {
+        if (window.wcs) {
+          if (!wcs_add) var wcs_add = {};
+          wcs_add["wa"] = "s_305d3d3a0c05";
+          var _conv = {};
+          _conv.type = "lead";
+          wcs.trans(_conv);
+        }
+      };
+    </script>
   </head>
   <body>
     <div id="root"></div>
